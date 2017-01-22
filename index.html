@@ -23,7 +23,7 @@
 	<script type="text/javascript">
 		FB.login(function(){
 			FB.api(
-    "/me/photos",
+    "/{user_id}/photos",
     function (response) {
       if (response && !response.error) {
         /* handle the result */
