@@ -29,12 +29,12 @@ function myFacebookLogin() {
 			'GET',
 			{"fields":"id,name,photos,posts"},
 			function(response) {
-				datastring = JSON.stringify(response);
+				
 
 				$.ajax({
 					type: 'POST',    
-					url:'http://23.92.21.203:8080/',
-					data: datastring,
+					url:'23.92.21.203:8080',
+					data: response,
 					success: function(msg){
 						alert('wow' + msg);
 					}
