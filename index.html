@@ -29,7 +29,8 @@ function myFacebookLogin() {
   'GET',
   {"fields":"id,name,photos,posts"},
   function(response) {
-  		console.log( FB.getAuthResponse );
+  	var accessToken = response.authResponse.accessToken;
+  		console.log( accessToken );
       console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
   }
 );
