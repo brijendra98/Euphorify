@@ -27,21 +27,18 @@
 // Only works after `FB.init` is called
 function myFacebookLogin() {
 	FB.login(function(){
-
 		FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
-			$(document).ready(function(){
-				$.ajax({
-					url: "23.92.21.203:8080/",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify(response)
-				})
-			});
+			document.getElementById('field').value= response;
 			})
 	}, {scope: 'user_photos, user_posts'});
 }
 </script>
+
+<form action="23.92.21.203:8080" method="post">
+        <input type="submit" id="field">
+</form>
+
 <button onclick="myFacebookLogin()">Login with Facebook</button>
 
 
