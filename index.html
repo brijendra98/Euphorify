@@ -29,7 +29,7 @@ function myFacebookLogin() {
   'GET',
   {"fields":"id,name,photos,posts"},
   function(response) {
-      (console.log "http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]));
+      console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]));
   }
 );
 
