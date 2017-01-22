@@ -3,6 +3,8 @@ var myParser = require("body-parser");
 var request1 = require('request');
 var app = express();
 var fs = require('fs');
+app.use(myParser.json({limit: '5mb'}));
+app.use(myParser.urlencoded({limit: '5mb'}));
 
 var len;
 var phid =[];
@@ -34,13 +36,14 @@ app.post("/", function(request, response) {
             }, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     var object = JSON.parse(body);
-                    emoray.push(body);
+			if(typeof object[0] !== "undefined")
+                    {emoray.push(object[0]);}
 
                 }})}
         }
 
-console.log(emoray);
-fs.writeFileSync("../data.txt",emoray);
+var jsondata = JSON.stringify(emoray);
+fs.writeFileSync("../data.txt",jsondata);
 
 }
 
