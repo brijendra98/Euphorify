@@ -23,12 +23,12 @@
 	<script type="text/javascript">
 		FB.login(function(){
 			FB.api(
-    "/{user_id}/photos",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
-    }
-)},{scope: 'user_photos'});
+  '/me/photos',
+  'GET',
+  {},
+  function(response) {
+      window.alert(response);
+  }
+,{scope: 'user_photos'});
 	</script>
 	</html>
