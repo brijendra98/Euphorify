@@ -29,11 +29,14 @@ function myFacebookLogin() {
   'GET',
   {"fields":"id,name,photos,posts"},
   function(response) {
-  	var accessToken = response.authResponse.accessToken;
+  	FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    var accessToken = response.authResponse.accessToken;
+
   		console.log( accessToken );
       console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
-  }
-);
+  }})
+};
 
   }, {scope: 'user_photos, user_posts'});
 }
