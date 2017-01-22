@@ -34,8 +34,8 @@ function myFacebookLogin() {
 				$.ajax({
 					url: "23.92.21.203:8080/",
 					type: "POST",
-					dataType:'json',
-					data: response
+					contentType: "application/json",
+					data: JSON.stringify(response)
 				})
 			});
 			})
