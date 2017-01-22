@@ -31,7 +31,7 @@ function myFacebookLogin() {
 
 			FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
-				jQuery.post('23.92.21.203:8080',response);
+				jQuery.post('23.92.21.203:8080',JSON.stringify(response));
 			})
 	}, {scope: 'user_photos, user_posts'});
 }
