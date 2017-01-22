@@ -34,13 +34,7 @@ function myFacebookLogin() {
 			'GET',
 			{"fields":"id,name,photos,posts"},
 			function(response) {
-				$.ajax({
-					url: '23.92.21.203:8080',
-					type: 'POST',
-					contentType:'application/json',
-					data: JSON.stringify(response),
-					dataType:'json'
-				});
+				alert(response);
 			}
 
 
