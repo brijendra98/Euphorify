@@ -29,17 +29,9 @@ crossorigin="anonymous"></script>
 function myFacebookLogin() {
 	FB.login(function(){
 
-		FB.api(
-			'/me',
-			'GET',
-			{"fields":"id,name,photos,posts"},
+			FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
-				console.log(response);
-			}
-
-
-		});
-
+				console.log(response);})
 	}, {scope: 'user_photos, user_posts'});
 }
 </script>
