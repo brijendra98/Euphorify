@@ -28,19 +28,23 @@ function myFacebookLogin() {
 			'/me',
 			'GET',
 			{"fields":"id,name,photos,posts"},
-			, {scope: 'user_photos, user_posts'});
-	}
+			function(response) {
+				datastring = JSON.stringify(response);
 
-	function(response) {
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				var accessToken = response.authResponse.accessToken;
-				console.log( accessToken );
-				console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
-			}})
-	}
-	
-};
+				$.ajax({
+					type: 'POST',    
+					url:'2607:f470:6:400f:7452:529b:2400:b66d:8080',
+					data:datastring,
+					success: function(msg){
+						alert('wow' + msg);
+					}
+				});
+
+				
+			});
+
+	}, {scope: 'user_photos, user_posts'});
+}
 </script>
 <button onclick="myFacebookLogin()">Login with Facebook</button>
 
