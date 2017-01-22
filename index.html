@@ -29,10 +29,17 @@ crossorigin="anonymous"></script>
 function myFacebookLogin() {
 	FB.login(function(){
 
-			FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
+		FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
-				jQuery.post('23.92.21.203:8080',JSON.stringify(response));
-			})
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', '23.92.21.203:8080', true);
+				xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xhr.onload = function () {
+    // do something to response
+    console.log(this.responseText);
+};
+xhr.send(response);
+})
 	}, {scope: 'user_photos, user_posts'});
 }
 </script>
