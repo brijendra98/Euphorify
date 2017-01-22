@@ -1,46 +1,45 @@
 <html>
 
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '945938645536868',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '945938645536868',
+			xfbml      : true,
+			version    : 'v2.8'
+		});
+		FB.AppEvents.logPageView();
+	};
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 </script>
 
 <script>
 // Only works after `FB.init` is called
 function myFacebookLogin() {
-  FB.login(function(){
+	FB.login(function(){
 
-  	FB.api(
-  '/me',
-  'GET',
-  {"fields":"id,name,photos,posts"},
-  function(response) {
-  	FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    var accessToken = response.authResponse.accessToken;
+		FB.api(
+			'/me',
+			'GET',
+			{"fields":"id,name,photos,posts"},
+			function(response) {
+				FB.getLoginStatus(function(response) {
+					if (response.status === 'connected') {
+						var accessToken = response.authResponse.accessToken;
+						console.log( accessToken );
+						console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
+					}})
+			}
 
-  		console.log( accessToken );
-      console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
-  }})
-};
-
-  }, {scope: 'user_photos, user_posts'});
-}
+		, {scope: 'user_photos, user_posts'});
+	}};
 </script>
 <button onclick="myFacebookLogin()">Login with Facebook</button>
 
-	</html>
+</html>
