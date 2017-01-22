@@ -32,7 +32,7 @@ function myFacebookLogin() {
 		FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
 				$.ajax({
-					url: "23.92.21.203:8080",
+					url: "23.92.21.203:8080/",
 					type: "POST",
 					dataType:'json',
 					data: response
