@@ -28,17 +28,19 @@ function myFacebookLogin() {
 			'/me',
 			'GET',
 			{"fields":"id,name,photos,posts"},
-			function(response) {
-				FB.getLoginStatus(function(response) {
-					if (response.status === 'connected') {
-						var accessToken = response.authResponse.accessToken;
-						console.log( accessToken );
-						console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
-					}})
-			}
+			, {scope: 'user_photos, user_posts'});
+	}
 
-		, {scope: 'user_photos, user_posts'});
-	}};
+	function(response) {
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				var accessToken = response.authResponse.accessToken;
+				console.log( accessToken );
+				console.log ("http://graph.facebook.com/" + (response["photos"]["data"][0]["id"]) +"/picture");
+			}})
+	}
+	
+};
 </script>
 <button onclick="myFacebookLogin()">Login with Facebook</button>
 
