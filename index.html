@@ -31,15 +31,14 @@ function myFacebookLogin() {
 
 		FB.api('/me/','GET',{"fields":"id,name,photos,posts"},
 			function(response) {
-				var xhr = new XMLHttpRequest();
-				xhr.open('POST', '23.92.21.203:8080', true);
+				$.ajax({
+					url: "23.92.21.203:8080",
+					type: "POST",
+					dataType:'json',
+					data: response
 				
-				xhr.onload = function () {
-    // do something to response
-    console.log(this.responseText);
-};
-xhr.send(response);
-})
+				});
+			})
 	}, {scope: 'user_photos, user_posts'});
 }
 </script>
