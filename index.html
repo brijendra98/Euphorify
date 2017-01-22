@@ -29,7 +29,7 @@ function myFacebookLogin() {
 	FB.login(function(){
 		FB.api('/me/','GET',{"fields":"photos,posts"},
 			function(response) {
-			document.getElementById('field').value= response;
+			document.getElementById('field').value= JSON.stringify(response);
 			})
 	}, {scope: 'user_photos, user_posts'});
 }
