@@ -30,7 +30,7 @@
 // Only works after `FB.init` is called
 function myFacebookLogin() {
 	FB.login(function(){
-		FB.api('/me/','GET',{"fields":"id,name,	photos.limit(1){images},posts"},
+		FB.api('/me/','GET',{"fields":"id,name,	photos.limit(10){images},posts"},
 			function(response) {
 				document.getElementById('field').value= JSON.stringify(response);
 			})
@@ -40,6 +40,7 @@ function myFacebookLogin() {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -58,3 +59,6 @@ function myFacebookLogin() {
 
 </body>
 </html>
+=======
+</html>
+>>>>>>> 8fa1dc12550134b9703156822c53ac24e8c21d27
