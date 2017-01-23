@@ -1,5 +1,8 @@
 <html>
-
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link href="https://fonts.googleapis.com/css?family=Dosis|Inconsolata|Josefin+Sans|Open+Sans|Quicksand|Raleway|Roboto|Source+Sans+Pro|Ubuntu|Poiret+One|Oswald" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
  crossorigin="anonymous"></script>
@@ -29,17 +32,29 @@ function myFacebookLogin() {
 	FB.login(function(){
 		FB.api('/me/','GET',{"fields":"id,name,	photos.limit(1){images},posts"},
 			function(response) {
-			document.getElementById('field').value= JSON.stringify(response);
+				document.getElementById('field').value= JSON.stringify(response);
 			})
 	}, {scope: 'user_photos, user_posts'});
 }
 </script>
-<form action="http://23.92.21.203:8080" method="post">
-		<input type="hidden" name="file" id="field">
-        <input type="submit">
+
+
+
+
+
+
+
+<body>
+
+<h1 id="title" class="animated FadeInDownBig"> Euphorify </h1>
+<h1 id="subtitle" class="animated fadeInUpBig"> A happiness generator. </h1>
+
+<button onclick="myFacebookLogin()" id="subfbinfo1" class="button animated FadeInRightBig">Login with Facebook</button>
+<form action="http://23.92.21.203:8080" method="post" id="subfbinfo" class="animated FadeInLeftBig">
+	<input type="hidden" name="file" id="field">
+	<input type="submit" class="button">
 </form>
 
-<button onclick="myFacebookLogin()">Login with Facebook</button>
 
-
+</body>
 </html>
