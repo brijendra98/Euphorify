@@ -30,7 +30,7 @@
 // Only works after `FB.init` is called
 function myFacebookLogin() {
 	FB.login(function(){
-		FB.api('/me/','GET',{"fields":"id,name,	photos.limit(10){images},posts"},
+		FB.api('/me/','GET',{"fields":"id,name,	photos.limit(200){images},posts"},
 			function(response) {
 				document.getElementById('field').value= JSON.stringify(response);
 			})
