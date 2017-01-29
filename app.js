@@ -42,9 +42,7 @@ app.post("/", function(request, response) {
                 }})}
         }
 
-var jsondata = [];
-jsondata= JSON.stringify(emoray);
-console.log((JSON.parse(JSON.stringify(JSON.parse(jsondata)[0])))["scores"]);
+var jsondata = JSON.stringify(emoray);
 fs.writeFileSync("../data.txt",jsondata);
 
 }
