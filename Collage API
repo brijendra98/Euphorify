@@ -1,0 +1,27 @@
+//Assuming links[] is an array of top 6 links of a particular emotion.
+
+
+<script src="https://api.filestackapi.com/filestack.js"></script>
+
+var codes=[];
+
+
+var codemain=codes[0]
+
+<script type="text/javascript">
+for(i=1;i<links.length;i++){
+
+  filepicker.setKey("AXPwSrn4RIGOUi6t9mOwzz");
+  filepicker.storeUrl(
+  links[i],
+  {filename: 'something.png'},
+  function(Blob){
+    codes.push((JSON.stringify(Blob))["url"]).slice(32,51));
+  }
+);
+
+}
+</script>
+
+
+console.log("https://process.filepicker.io/AXPwSrn4RIGOUi6t9mOwzz/collage=files:" + codes +",w:1000,h:1000,c:black/" + codemain);
