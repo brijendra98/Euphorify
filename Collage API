@@ -1,15 +1,16 @@
 <html>
 <body>
 
-//Assuming links[] is an array of top 6 links of a particular emotion.
-
-
 
 <script src="https://api.filestackapi.com/filestack.js"></script>
 
+<p>Link to your Collage is :-</p>
 
 
 <script type="text/javascript">
+
+//Assuming links[] is an array of top 6 links of a particular emotion.
+
 var links=[
 "http://webneel.com/daily/sites/default/files/images/daily/09-2013/7-amazing-photography-ship.jpg",
 "https://s-media-cache-ak0.pinimg.com/originals/51/b2/32/51b23231716e2bd4b5c958fd4f821f80.jpg",
@@ -19,26 +20,41 @@ var links=[
 
 var str="";
 
+
 var i;
 for(i=1;i<links.length;i++){
 str=str+",\""+links[i]+"\"";
   }
 var codemain=links[0]
 
-var collagelink = "https://process.filepicker.io/AXPwSrn4RIGOUi6t9mOwzz/collage=files:["+str.substring(1)+"],w:1500,h:1000,c:black/" + codemain; //Calling the API and storing link to the collage
+var collagelink = "https://process.filepicker.io/AhTgLagciQByzXpFGRI0Az/collage=files:["+str.substring(1)+"],w:1500,h:1000,c:black/" + codemain; //Calling the API and storing link to the collage
 
-filepicker.setKey("AXPwSrn4RIGOUi6t9mOwzz");
+filepicker.setKey("AhTgLagciQByzXpFGRI0Az");
 filepicker.storeUrl(collagelink,
   {filename: 'something.png'},
   function(Blob){
     var final_link=(JSON.stringify(Blob["url"]));//Uploading image to generate a clean link
+
+   document.getElementById("myLink").innerHTML=final_link;//printing link to screen
+
     console.log(final_link); //printing link to console
   }
 );
 
 
+
 </script>
 
+
+</body>
+
+</html> 
+
+
+
+</script>
+
+<p id="myLink"></p>
 
 </body>
 </html>
