@@ -1,27 +1,38 @@
+<html>
+<body>
+
 //Assuming links[] is an array of top 6 links of a particular emotion.
+
 
 
 <script src="https://api.filestackapi.com/filestack.js"></script>
 
-var codes=[];
 
-
-var codemain=codes[0]
 
 <script type="text/javascript">
+/*var links=[
+"http://webneel.com/daily/sites/default/files/images/daily/09-2013/7-amazing-photography-ship.jpg",
+"https://s-media-cache-ak0.pinimg.com/originals/51/b2/32/51b23231716e2bd4b5c958fd4f821f80.jpg",
+"http://kingofwallpapers.com/amazing/amazing-003.jpg", 
+"http://powellong.com/data/wallpapers/72/WDF_1171851.jpg"
+];*/
+
+var str="";
+
+var i;
 for(i=1;i<links.length;i++){
-
-  filepicker.setKey("AXPwSrn4RIGOUi6t9mOwzz");
-  filepicker.storeUrl(
-  links[i],
-  {filename: 'something.png'},
-  function(Blob){
-    codes.push((JSON.stringify(Blob))["url"]).slice(32,51));
+str=str+",\""+links[i]+"\"";
   }
-);
+var codemain=links[0]
 
-}
+var collagelink = "https://process.filepicker.io/AXPwSrn4RIGOUi6t9mOwzz/collage=files:["+str+"],w:1000,h:1000,c:black/" + codemain; //Calling the API and printing link to the collage
+
+
+
 </script>
 
 
-console.log("https://process.filepicker.io/AXPwSrn4RIGOUi6t9mOwzz/collage=files:" + codes +",w:1000,h:1000,c:black/" + codemain);
+
+
+</body>
+</html>
